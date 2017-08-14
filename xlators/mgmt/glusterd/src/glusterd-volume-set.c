@@ -1032,6 +1032,11 @@ out:
  */
 
 struct volopt_map_entry glusterd_volopt_map[] = {
+        /* audit xlator options*/
+        {  .key         = "experimental.audit",
+           .voltype     = "experimental/audit",	
+           .op_version  = 1,
+        },
         /* DHT xlator options */
         { .key        = "cluster.lookup-unhashed",
           .voltype    = "cluster/distribute",

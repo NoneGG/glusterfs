@@ -108,6 +108,7 @@ typedef enum {
         GF_XLATOR_BD,
         GF_XLATOR_SERVER,
         GF_XLATOR_NONE,
+        GF_XLATOR_AUDIT,
 } glusterd_server_xlator_t;
 
 /* As of now debug xlators can be loaded only below fuse in the client

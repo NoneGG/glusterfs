@@ -1925,6 +1925,25 @@ out:
 }
 
 static int
+brick_graph_add_audit (volgen_graph_t *graph, glusterd_volinfo_t *volinfo,
+                         dict_t *set_dict, glusterd_brickinfo_t *brickinfo)
+{
+        int             ret = -1;
+        xlator_t        *xl = NULL;
+        char            *value = NULL;
+
+        if (!graph || !volinfo || !set_dict)
+                goto out;
+
+        xl = volgen_graph_add (graph, "experimental/audit", volinfo->volname);
+        if (!xl)
+                goto out;
+        ret = 0;
+out:
+        return ret;
+}
+
+static int
 brick_graph_add_quota (volgen_graph_t *graph, glusterd_volinfo_t *volinfo,
                          dict_t *set_dict, glusterd_brickinfo_t *brickinfo)
 {
@@ -2333,6 +2352,7 @@ static volgen_brick_xlator_t server_graph_table[] = {
         {brick_graph_add_upcall, "upcall"},
         {brick_graph_add_leases, "leases"},
         {brick_graph_add_pump, NULL},
+        {brick_graph_add_audit, "audit"},
         {brick_graph_add_ro, NULL},
         {brick_graph_add_worm, NULL},
         {brick_graph_add_locks, "locks"},
